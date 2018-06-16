@@ -4,7 +4,7 @@
             <v-list>
                 <v-list-tile v-for="button in buttons" :key="button.id" :to="button.to">
                     <v-list-tile-action>
-                        <v-icon class="fio" :class="button.icon"></v-icon>
+                        <v-icon>{{ button.icon }}</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
                         <v-list-tile-title>{{ button.text }}</v-list-tile-title>
@@ -38,8 +38,9 @@
             return {
                 drawer: false,
                 buttons: [
-                    { id: 0, icon: 'ff-home', text: 'Dashboard', to: 'home' },
-                    { id: 1, icon: 'ff-home', text: 'Active menu', to: 'active-menu' }
+                    { id: 0, icon: 'dashboard', text: 'Dashboard', to: 'home' },
+                    { id: 1, icon: 'settings', text: 'Administration', to: 'admin' },
+                    { id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' }
                 ]
             }
         }
