@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
+import { menuModule } from './menu-module';
+
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -9,6 +11,10 @@ export const store = new Vuex.Store({
     plugins: [
         // default local storage
         createPersistedState({ storage: window.sessionStorage }) 
+    ],
+
+    modules: [
+        menuModule
     ],
     
     state: {
