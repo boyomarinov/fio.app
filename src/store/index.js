@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import { mealModule } from './meals-module';
+
 import { menuModule } from './menu-module';
+import { mealsModule } from './meals-module';
+import { daysModule } from './days-module';
 
 Vue.use(Vuex);
 
@@ -13,11 +15,12 @@ export const store = new Vuex.Store({
         createPersistedState({ storage: window.sessionStorage }) 
     ],
 
-    modules: [
+    modules: {
         menuModule,
-        mealModule
-    ],
-
+        mealsModule,
+        daysModule
+    },
+    
     state: {
         token: null,
         user: null
