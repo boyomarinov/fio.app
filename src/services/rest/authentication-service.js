@@ -3,7 +3,8 @@ import { post } from './core/http-service';
 export const login = (login, password) => {
     return {
         user: {
-            name: login
+            name: login,
+            role: login === 'admin' ? 'admin' : 'user'
         },
         token: 'token'
     };
