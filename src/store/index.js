@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
+import { menuModule } from './menu-module';
 import { mealsModule } from './meals-module';
 import { daysModule } from './days-module';
 
@@ -15,6 +16,7 @@ export const store = new Vuex.Store({
     ],
 
     modules: {
+        menuModule,
         mealsModule,
         daysModule
     },

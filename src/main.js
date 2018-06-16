@@ -28,7 +28,7 @@ Vue.use(Vuetify, {
 });
 
 Vue.config.productionTip = false;
-Vue.http.options.root = '../api';
+Vue.http.options.root = './api';
 // Vue.http.interceptors.push((req) => {
 //     req.headers.set('Authorization', store.getters.token);
 // });
