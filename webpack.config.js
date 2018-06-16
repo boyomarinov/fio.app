@@ -23,8 +23,7 @@ module.exports = {
             { 
                 test: /\.(png|svg|jpg)$/,
                 exclude: [
-                    resolvePath('src/assets/fonts'),
-                    resolvePath('../node_modules/fio-font/fonts')
+                    resolvePath('src/assets/fonts')
                 ],
                 use: {
                     loader: 'file-loader',
@@ -36,8 +35,7 @@ module.exports = {
             { 
                 test: /\.(woff|woff2|eot|ttf|svg)$/,
                 include: [
-                    resolvePath('src/assets/fonts'),
-                    resolvePath('../node_modules/fio-font/fonts')
+                    resolvePath('src/assets/fonts')
                 ],
                 use: {
                     loader: 'file-loader',

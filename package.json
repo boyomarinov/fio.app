@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "build": "webpack --config ./webpack.config.js",
-        "start": "nodemon --watch ./src/ -e vue --exec npm run build-client"
+        "start": "nodemon --watch ./src/ -e vue --exec npm run build"
     },
     "devDependencies": {
         "babel-cli": "^6.24.1",

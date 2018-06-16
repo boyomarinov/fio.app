@@ -3,17 +3,15 @@
         <content-header :icon="icon" :text="title">
         </content-header>
 
-        <v-layout>
-            <v-container fluid grid-list-md>
-                <v-layout row wrap>
-                    <v-flex v-for="(day, index) in days" xs4>
-                        <v-card flat tile>
-                            <day>{{ day.value }}</day>
-                        </v-card>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-        </v-layout>
+        <v-container fluid grid-list-md>
+            <v-layout row wrap>
+                <v-flex v-for="day in days" xs4>
+                    <v-card tile>
+                        <day :day="day"></day>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
     </div>
 </template>
 
@@ -33,7 +31,9 @@
                 days: [
                     { id: 1, value: 'Monday' },
                     { id: 2, value: 'Tuesday' },
-                    { id: 3, value: 'Wednesday' }
+                    { id: 3, value: 'Wednesday' },
+                    { id: 3, value: 'Thursday' },
+                    { id: 3, value: 'Friday' }
                 ]
             }
         }
