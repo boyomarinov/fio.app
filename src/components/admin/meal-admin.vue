@@ -1,12 +1,12 @@
 <template>
     <v-card>
         <v-card-title>
-            <h4>Meals</h4>
+            <h4 class="title">Meals</h4>
         </v-card-title>
         <v-divider></v-divider>
         <v-list>
             <template v-for='(meal, index) in meals'>
-                <v-list-tile>
+                <v-list-tile @click>
                     <v-list-tile-content>
                         <v-list-tile-title>{{ meal.name }}</v-list-tile-title>
                     </v-list-tile-content>

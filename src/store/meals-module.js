@@ -1,6 +1,6 @@
 import * as mealService from '../services/rest/meal-service'; 
 
-export const mealModule = {
+export const mealsModule = {
     state: {
         meals: []
     },
