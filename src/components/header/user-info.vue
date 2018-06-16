@@ -1,11 +1,10 @@
 <template>
     <v-menu class="offset-y">
         <v-btn flat slot="activator">
-            <v-avatar size="36px">
-                <img :src="$store.getters.user.avatarUrl" />
-                <!--<img src="$store.getters.user.fullName" />-->
-            </v-avatar>
-            <span class="hidden-xs-only ml2">{{ $store.getters.user.fullName }}</span>
+            <!--<v-avatar size="36px">-->
+                <!--<img :src="$store.getters.user.avatarUrl" />-->
+            <!--</v-avatar>-->
+            <span class="ml2">{{ $store.getters.user.name }}</span>
         </v-btn>
         <v-list>
             <v-list-tile @click="logout()">

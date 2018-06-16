@@ -21,7 +21,7 @@ module.exports = {
             { test: /\.vue$/, loader: 'vue-loader' },
             { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
             { 
-                test: /\.(png|svg)$/, 
+                test: /\.(png|svg|jpg)$/,
                 exclude: [
                     resolvePath('src/assets/fonts'),
                     resolvePath('../node_modules/fio-font/fonts')

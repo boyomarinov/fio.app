@@ -37,8 +37,8 @@ export const store = new Vuex.Store({
     },
 
     getters: {
-        isAuthenticated: (state) => true,//!!state.token && !!state.user,
-        user: (state) => { return { avatarUrl: '', fullName: 'Ivancho' } },
+        isAuthenticated: (state) => state.token || state.user,
+        user: (state) => state.user,
         token: (state) => state.token 
     }
 });

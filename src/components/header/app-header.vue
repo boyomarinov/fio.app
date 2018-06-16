@@ -14,7 +14,7 @@
         </v-navigation-drawer>
         <v-toolbar app fixed dark color="primary" :clipped-left="$vuetify.breakpoint.lgAndUp">
             <v-btn flat icon @click.stop="drawer = !drawer">
-                <i class="fio ff-bars"></i>
+                <i class="material-icons">list</i>
             </v-btn>
             <div class="logo"></div>
             <v-toolbar-title>Lunch</v-toolbar-title>

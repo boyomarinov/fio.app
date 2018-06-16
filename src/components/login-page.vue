@@ -64,7 +64,7 @@ export default {
 
     .login-page
         height 100%
-        background url(../assets/images/login-background.png) center no-repeat
+        background url(../assets/images/login-background.jpg) center no-repeat
         background-size cover
         display flex
         align-items center
