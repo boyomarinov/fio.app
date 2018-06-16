@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import { mealModule } from './meals-module';
 
 Vue.use(Vuex);
 
@@ -10,6 +11,10 @@ export const store = new Vuex.Store({
         // default local storage
         createPersistedState({ storage: window.sessionStorage }) 
     ],
+
+    modules: {
+        mealModule
+    },
     
     state: {
         token: null,
