@@ -38,7 +38,8 @@
             return {
                 drawer: false,
                 buttons: [
-                    { id: 0, icon: 'ff-home', text: 'Dashboard', to: 'home' }
+                    { id: 0, icon: 'ff-home', text: 'Dashboard', to: 'home' },
+                    { id: 1, icon: 'ff-home', text: 'Active menu', to: 'active-menu' }
                 ]
             }
         }

@@ -4,6 +4,7 @@ import { store } from '@/store';
 
 import Login from '@/components/login-page.vue';
 import Home from '@/components/home-page.vue';
+import ActiveMenu from '@/components/active-menu.vue';
 
 Vue.use(Router);
 
@@ -18,6 +19,14 @@ export const router = new Router({
             path: '/home',
             name: 'home',
             component: Home,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/active-menu',
+            name: 'active-menu',
+            component: ActiveMenu,
             meta: {
                 requiresAuth: true
             }

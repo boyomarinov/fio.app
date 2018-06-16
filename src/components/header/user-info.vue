@@ -1,5 +1,5 @@
 <template>
-    <v-menu class="offset-y">
+    <v-menu offset-y>
         <v-btn flat slot="activator">
             <!--<v-avatar size="36px">-->
                 <!--<img :src="$store.getters.user.avatarUrl" />-->

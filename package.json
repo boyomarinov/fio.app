@@ -1,8 +1,8 @@
 {
-    "name": "tokei",
+    "name": "fio-app",
     "version": "2.0.0",
     "main": "server.js",
-    "author": "Fio Lunch",
+    "author": "Vlado Vlado and... Boyo",
     "license": "MIT",
     "scripts": {
         "build": "webpack --config ./webpack.config.js",
