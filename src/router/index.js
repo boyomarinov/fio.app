@@ -4,6 +4,7 @@ import { store } from '@/store';
 
 import Login from '@/components/login-page.vue';
 import Home from '@/components/home-page.vue';
+import Admin from '@/components/admin-page.vue';
 
 Vue.use(Router);
 
@@ -18,6 +19,14 @@ export const router = new Router({
             path: '/home',
             name: 'home',
             component: Home,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: Admin,
             meta: {
                 requiresAuth: true
             }
