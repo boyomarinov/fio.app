@@ -69,6 +69,8 @@ const BASE_MENU_URI = 'http://localhost:50096/api/v1/Menus',
     BASE_DAY_URI = 'http://localhost:50096/api/v1/Days';
 
 export async function getActiveMenu() {
+    return sampleMenu;
+
     const menu = await httpService.get(`${BASE_MENU_URI}/active`);
     const days = await httpService.get(`${BASE_MENU_URI}/${menu[0].id}/days`);
     menu[0].days = days;
@@ -78,6 +80,7 @@ export async function getActiveMenu() {
         const id = moment(day.date).format('YYYY-MM-DD');
         promiseList.push(httpService.get(`${BASE_DAY_URI}/${id}/meals`));
     });
+
     let daysMails = await Promise.all(promiseList);
     console.log(daysMails);
     for (let i = 0; i < days.length; i++) {

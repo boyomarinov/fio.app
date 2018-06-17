@@ -2,7 +2,7 @@
     <div class="day">
         <v-card-title>{{ formattedDay }}</v-card-title>
         <v-radio-group v-model="selectedMeal">
-            <v-radio class="meal" v-for="(meal, index) in day.meals" :value="meal.id" :label="meal.name">
+            <v-radio class="meal" v-for="(meal, index) in day.meals" :value="meal.id" :label="meal.name" @change="onMealSelected(meal)">
             </v-radio>
         </v-radio-group>
     </div>
@@ -24,6 +24,14 @@
             return {
                 selectedMeal: {}
             };
+        },
+        methods: {
+            onMealSelected(selectedMeal) {
+                this.$store.dispatch('addSelection', {
+                    day: this.day,
+                    selectedMeal: selectedMeal
+                });
+            }
         }
     }
 </script>
