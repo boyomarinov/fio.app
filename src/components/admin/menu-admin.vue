@@ -33,6 +33,7 @@
                         <v-select :items="days" item-text="date" v-model="menu.days[2]" label="Wednesday"></v-select>
                         <v-select :items="days" item-text="date" v-model="menu.days[3]" label="Thursday"></v-select>
                         <v-select :items="days" item-text="date" v-model="menu.days[4]" label="Friday"></v-select>
+                         <v-switch :label="'Active'" v-model="menu.isActive"></v-switch>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>

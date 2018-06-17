@@ -11,9 +11,10 @@
                         <v-list-tile-title>{{ meal.name }} ({{ meal.rating }})</v-list-tile-title>
                     </v-list-tile-content>
                     <v-list-tile-action>
-                        <v-btn flat icon color="success" @click='editMeal(meal)'>
+                        <meal-edit-dialog :meal='meal'></meal-edit-dialog>
+                        <!-- <v-btn flat icon color="success" @click='editMeal(meal)'>
                             <v-icon>edit</v-icon>
-                        </v-btn>
+                        </v-btn> -->
                     </v-list-tile-action>
                     <v-list-tile-action>
                         <v-btn flat icon color='error' @click='removeMeal(meal)'>
@@ -53,8 +54,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import { saveFile } from '@/services/rest/resource-service.js';
+import MealEditDialog from '@/components/meals/meal-edit-dialog.vue';
 
 export default {
+    components: {
+        MealEditDialog
+    },
+    
     computed: {
         ...mapGetters({
             meals: 'meals'

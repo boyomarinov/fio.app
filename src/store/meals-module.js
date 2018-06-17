@@ -14,9 +14,21 @@ export const mealsModule = {
             state.meals.push(meal);
         },
 
-        updateMeal(state, _meal) {
-            let meal = state.meals[state.meals.indexOf(_meal)];
-            meal = _meal;
+        updateMeal(state, payload) {
+            const meal = state.meals.find(meal => meal.id === payload.id);
+            if (meal) {
+                const update = (field) => { 
+                    if (payload[field] || payload[field] === 0) {
+                        meal[field] = payload[field];
+                    }
+                }
+
+                update('name');
+                update('description');
+                update('imageUrl');
+                update('keywords');
+                update('rating');
+            }
         },
 
         removeMeal(state, meal) {
@@ -53,6 +65,7 @@ export const mealsModule = {
     },
 
     getters: {
-        meals: state => state.meals
+        meals: state => state.meals,
+        getMealById: state => id => state.meals.find(item => item.id === id)
     }
 };
