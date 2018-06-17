@@ -63,36 +63,24 @@ const sampleMenu = {
     ]
 };
 
-export class MenuService {
-    constructor(uri) {
-        this.uri = uri;
-    }
+import moment from 'moment';
 
-    getList() {
-        return sampleMenu;
-        //return httpService.get(this.uri);
-    }
+const BASE_MENU_URI = 'http://localhost:50096/api/v1/Menus',
+    BASE_DAY_URI = 'http://localhost:50096/api/v1/Days';
 
-    getOne(id) {
-        return httpService.get(`${this.uri}/${id}`);
-    }
+export async function getActiveMenu() {
+    const menu = await httpService.get(`${BASE_MENU_URI}/active`);
+    const days = await httpService.get(`${BASE_MENU_URI}/${menu[0].id}/days`);
+    menu[0].days = days;
 
-    create(json) {
-        return httpService.post(this.uri, json);
-    }
-
-    remove(id) {
-        return httpService.remove(`${this.uri}/${id}`);
-    }
-
-    getCurrent() {
-        return httpService.get(`${this.uri}/current`)
-    }
-
-    getActive() {
-        return sampleMenu;
-        //return httpService.get(`${this.uri}/active`)
+    let promiseList = [];
+    days.forEach((day) => {
+        const id = moment(day.date).format('YYYY-MM-DD');
+        promiseList.push(httpService.get(`${BASE_DAY_URI}/${id}/meals`));
+    });
+    let daysMails = await Promise.all(promiseList);
+    console.log(daysMails);
+    for (let i = 0; i < days.length; i++) {
+        days[i].meals = daysMails[i];
     }
 }
-
-export const menuService = new MenuService('/v1/Menus');

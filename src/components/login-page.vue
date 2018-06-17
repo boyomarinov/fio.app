@@ -3,8 +3,8 @@
         <div class="login-form">
             <div class="title">
                 <div class="logo">
-                    <span class="text">Lunch</span>
                 </div>
+                <span class="text">Lunch</span>
             </div>
             <span class="login-text">Login</span>
             <div class="form">

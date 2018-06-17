@@ -1,4 +1,4 @@
-import { menuService } from '@/services/rest/menu-service';
+import { getActiveMenu } from '@/services/rest/menu-service';
 
 export const menuModule = {
     state: {
@@ -13,7 +13,7 @@ export const menuModule = {
 
     actions: {
         async loadActiveMenu({ commit }) {
-            const activeMenu = await menuService.getActive();
+            const activeMenu = await getActiveMenu();
             if (activeMenu) {
                 commit('loadActiveMenu', activeMenu)
             }

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!!$store.getters.user">
         <v-navigation-drawer app fixed v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp">
             <v-list>
                 <v-list-tile v-for="button in buttons" :key="button.id" :to="button.to">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import UserInfo from './user-info.vue'
+    import UserInfo from './user-info.vue';
 
     export default {
         components: {
@@ -35,14 +35,18 @@
         },
 
         data() {
+            // TODO: refactor when real user data gets in use
+            const buttons = [{ id: 0, icon: 'dashboard', text: 'Dashboard', to: 'home' }];
+
+            if (this.$store.getters.user.role === 'admin') {
+                buttons.push({ id: 1, icon: 'settings', text: 'Administration', to: 'admin' });
+            } else {
+                buttons.push({ id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' });
+            }
+
             return {
                 drawer: false,
-                buttons: [
-                    { id: 0, icon: 'dashboard', text: 'Dashboard', to: 'home' },
-                    { id: 1, icon: 'settings', text: 'Administration', to: 'admin' },
-                    { id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' },
-                    { id: 3, icon: 'fastfood', text: 'Meals', to: 'meals' }
-                ]
+                buttons: buttons
             }
         }
     }
