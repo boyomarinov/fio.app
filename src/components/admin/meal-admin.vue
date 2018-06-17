@@ -33,7 +33,7 @@
                     </v-card-title>
                     <v-divider></v-divider>
                     <v-card-text>
-                        <v-text-field label="Picture" v-model="meal.imageUrl" @click="pickFile"></v-text-field>
+                        <v-text-field label="Picture" v-model="image.name" @click="pickFile"></v-text-field>
                         <input ref="image" accept="image/*" type='file' style="display: none" @change="onFilePicked"/>
                         <v-text-field label="Name" v-model="meal.name"></v-text-field>
                         <v-text-field label="Description" textarea v-model="meal.description"></v-text-field>
@@ -52,6 +52,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { saveFile } from '@/services/rest/resource-service.js';
 
 export default {
     computed: {
@@ -63,6 +64,7 @@ export default {
     data() {
         return {
             dialog: false,
+            image: {},
             meal: {
                 name: '',
                 description: '',
@@ -82,31 +84,28 @@ export default {
 
         onFilePicked(e) {
             const files = e.target.files;
-            this.meal.imageUrl = files[0];
-            
-			// if (files[0] !== undefined) {
-			// 	this.imageName = files[0].name
-			// 	if (this.imageName.lastIndexOf('.') <= 0) {
-			// 		return;
-			// 	}
-			// 	const fr = new FileReader ()
-			// 	fr.readAsDataURL(files[0])
-			// 	fr.addEventListener('load', () => {
-			// 		this.meal.imageUrl = imageName;//fr.result;
-			// 	});
-			// } else {
-            //     this.meal.imageUrl = '';
-			// }
+            if (files[0]) {
+                this.image = files[0];
+            }
         },
 
-        createMeal() {
+        async createMeal() {
+            await this.saveImage()
             this.$store.dispatch('createMeal', this.meal);
             this.cancel();
         },
         
-        updateMeal() {
+        async updateMeal() {
+            await this.saveImage()
             this.$store.dispatch('updateMeal', this.meal);
             this.cancel();
+        },
+        
+        async saveImage() {
+            if (this.image) {
+                const imageUrl = await saveFile(this.image);
+                this.meal.imageUrl = `${imageUrl}/image`;
+            }
         },
 
         editMeal(meal) {

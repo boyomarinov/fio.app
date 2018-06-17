@@ -15,7 +15,7 @@ export const mealsModule = {
         },
 
         updateMeal(state, _meal) {
-            const meal = state.meals[state.meals.indexOf(_meal)];
+            let meal = state.meals[state.meals.indexOf(_meal)];
             meal = _meal;
         },
 
