@@ -6,7 +6,7 @@
                 <template v-for='(meal, index) in meals'>
                     <v-flex class="xs12 md4 lg3">
                         <v-card>
-                            <v-card-media height='200px' src="./images/musaka.png">
+                            <v-card-media height='200px' :src='absImageUrl(meal.imageUrl)'>
                             </v-card-media>
                             <v-card-title>
                                 <h4 class="title">{{ meal.name }}</h4>
@@ -60,7 +60,8 @@ export default {
 
     data() {
         return {
-            ratingEnabled: false
+            ratingEnabled: false,
+            absImageUrl: (imageUrl) => `http://localhost:50096${imageUrl}`
         }
     },
 

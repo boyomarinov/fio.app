@@ -27,29 +27,25 @@
 </template>
 
 <script>
-    import UserInfo from './user-info.vue';
+import UserInfo from './user-info.vue';
+import { mapState } from 'vuex';
 
-    export default {
-        components: {
-            UserInfo
-        },
+export default {
+    components: {
+        UserInfo
+    },
 
-        data() {
-            // TODO: refactor when real user data gets in use
-            const buttons = [{ id: 0, icon: 'dashboard', text: 'Dashboard', to: 'home' }];
+    computed: {
+        ...mapState(['buttons'])
+    },
 
-            if (this.$store.getters.user.role === 'admin') {
-                buttons.push({ id: 1, icon: 'settings', text: 'Administration', to: 'admin' });
-            } else {
-                buttons.push({ id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' });
-            }
-
-            return {
-                drawer: false,
-                buttons: buttons
-            }
+    data() {
+        // TODO: refactor when real user data gets in use
+        return {
+            drawer: false,
         }
     }
+}
 </script>
 
 <style lang="stylus" scoped>

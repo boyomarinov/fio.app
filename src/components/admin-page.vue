@@ -9,6 +9,9 @@
                 <v-flex class='xs12 md6 lg3'>
                     <day-admin></day-admin>
                 </v-flex>
+                <v-flex class='xs12 md6 lg3'>
+                    <menu-admin></menu-admin>
+                </v-flex>
             </v-layout>
         </v-container>
     </div>
@@ -18,12 +21,14 @@
 import ContentHeader from '@/components/core/content-header.vue';
 import MealAdmin from '@/components/admin/meal-admin.vue';
 import DayAdmin from '@/components/admin/day-admin.vue';
+import MenuAdmin from '@/components/admin/menu-admin.vue';
 
 export default {
     components: {
         ContentHeader,
         MealAdmin,
-        DayAdmin
+        DayAdmin,
+        MenuAdmin
     },
 
     data() {
