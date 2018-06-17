@@ -40,7 +40,8 @@
                 buttons: [
                     { id: 0, icon: 'dashboard', text: 'Dashboard', to: 'home' },
                     { id: 1, icon: 'settings', text: 'Administration', to: 'admin' },
-                    { id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' }
+                    { id: 2, icon: 'shopping_cart', text: 'Active menu', to: 'active-menu' },
+                    { id: 3, icon: 'fastfood', text: 'Meals', to: 'meals' }
                 ]
             }
         }

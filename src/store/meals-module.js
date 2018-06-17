@@ -14,6 +14,11 @@ export const mealsModule = {
             state.meals.push(meal);
         },
 
+        updateMeal(state, _meal) {
+            const meal = state.meals[state.meals.indexOf(_meal)];
+            meal = _meal;
+        },
+
         removeMeal(state, meal) {
             state.meals.splice(state.meals.indexOf(meal), 1);
         }
@@ -31,6 +36,13 @@ export const mealsModule = {
             const meal = await mealService.createMeal(_meal);
             if (meal) {
                 commit('addMeal', meal)
+            }
+        },
+
+        async updateMeal({ commit }, meal) {
+            if (meal.id) {
+                await mealService.updateMeal(meal);
+                commit('updateMeal', meal);
             }
         },
 

@@ -8,7 +8,7 @@
             <template v-for='(day, index) in days'>
                 <v-list-tile @click="">
                     <v-list-tile-content>
-                        <v-list-tile-title>{{ day.date }}</v-list-tile-title>
+                        <v-list-tile-title>{{ getFormattedDay(day) }}</v-list-tile-title>
                     </v-list-tile-content>
                     <v-list-tile-action>
                         <v-btn flat icon color='error' @click='removeDay(day)'>
@@ -51,6 +51,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import moment from 'moment';
 
 export default {
     computed: {
@@ -76,6 +77,10 @@ export default {
     },
 
     methods: {
+        getFormattedDay(day) {
+            return moment(day.date).format('dddd DD.MM.YYYY')
+        },
+
         createDay() {
             this.dialog = false
             this.$store.dispatch('createDay', this.day);
