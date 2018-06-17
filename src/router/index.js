@@ -6,6 +6,7 @@ import Login from '@/components/login-page.vue';
 import Home from '@/components/home-page.vue';
 import ActiveMenu from '@/components/active-menu.vue';
 import Admin from '@/components/admin-page.vue';
+import Meals from '@/components/meals-page.vue';
 
 Vue.use(Router);
 
@@ -35,6 +36,13 @@ export const router = new Router({
             path: '/admin',
             name: 'admin',
             component: Admin,
+            meta: {
+                requiresAuth: true
+            }
+        }, {
+            path: '/meals',
+            name: 'meals',
+            component: Meals,
             meta: {
                 requiresAuth: true
             }
