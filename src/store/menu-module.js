@@ -1,9 +1,11 @@
 import { getActiveMenu } from '@/services/rest/menu-service';
+import { createOrder } from '@/services/rest/orders-service';
 
 export const menuModule = {
     state: {
         activeMenu: {},
-        currentSelection: {}
+        currentSelection: {},
+        currentSelectionComplete: false
     },
 
     mutations: {
@@ -12,9 +14,21 @@ export const menuModule = {
         },
         addSelection(state, { day, selectedMeal}) {
             state.currentSelection[day.date] = selectedMeal.id;
+            state.activeMenu.days.find((d) => d.date === day.date).complete = true;
+        },
+        setSelectionComplete(state) {
+            const activeMenuDays = state.activeMenu.days;
+            state.currentSelectionComplete = activeMenuDays.filter((d) => d.complete).length === activeMenuDays.length;
         },
         submitMenuChoice(state) {
-            console.log(state.currentSelection);
+            for (let index in state.currentSelection) {
+                createOrder({
+                    menu: { id: state.activeMenu.id },
+                    day: { id: index },
+                    user: { id: 1 },
+                    meal: { id: state.currentSelection[index] }
+                });
+            }
         }
     },
 
@@ -28,6 +42,9 @@ export const menuModule = {
         addSelection({ commit }, { day, selectedMeal }) {
             commit('addSelection', { day, selectedMeal});
         },
+        setSelectionComplete({ commit }) {
+            commit('setSelectionComplete');
+        },
         submitMenuChoice({ commit }) {
             commit('submitMenuChoice');
         }
@@ -35,6 +52,7 @@ export const menuModule = {
 
     getters: {
         activeMenu: state => state.activeMenu,
-        currentSelection: state => state.currentSelection
+        currentSelection: state => state.currentSelection,
+        currentSelectionComplete: state => state.currentSelectionComplete
     }
 };

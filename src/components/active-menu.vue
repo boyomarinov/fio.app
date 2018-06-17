@@ -4,7 +4,7 @@
 
         <v-container fluid grid-list-md>
             <v-layout row wrap>
-                <v-flex v-for="day in activeMenu.days" xs4>
+                <v-flex v-for="day in activeMenu.days" xs2>
                     <v-card tile>
                         <day :day="day"></day>
                     </v-card>
@@ -36,6 +36,9 @@
         methods: {
             submitChoice() {
                 this.$store.dispatch('submitMenuChoice');
+            },
+            getDisabled() {
+                return !this.$store.currentSelectionComplete;
             }
         }
     }

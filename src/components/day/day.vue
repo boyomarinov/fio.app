@@ -31,6 +31,7 @@
                     day: this.day,
                     selectedMeal: selectedMeal
                 });
+                this.$store.dispatch('setSelectionComplete');
             }
         }
     }
