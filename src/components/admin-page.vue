@@ -19,7 +19,7 @@
 
 <script>
 import ContentHeader from '@/components/core/content-header.vue';
-import MealAdmin from '@/components/admin/meal-admin.vue';
+import MealAdmin from '@/components/meals/meal-admin.vue';
 import DayAdmin from '@/components/admin/day-admin.vue';
 import MenuAdmin from '@/components/admin/menu-admin.vue';
 
