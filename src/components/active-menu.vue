@@ -35,7 +35,7 @@
         },
         methods: {
             submitChoice() {
-                console.log('submitChoice');
+                this.$store.dispatch('submitMenuChoice');
             }
         }
     }

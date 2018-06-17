@@ -82,7 +82,7 @@ export default {
         },
 
         createDay() {
-            this.dialog = false
+            this.dialog = false;
             this.$store.dispatch('createDay', this.day);
         },
 
