@@ -3,13 +3,14 @@
         <content-header></content-header>
 
         <v-container fluid grid-list-md>
-            <v-layout row wrap>
-                <v-flex v-for="day in activeMenu.days" xs2>
+            <v-layout row nowwrap>
+                <v-flex v-for="day in activeMenu.days" xs12 md6 lg3>
                     <v-card tile>
                         <day :day="day"></day>
                     </v-card>
                 </v-flex>
             </v-layout>
+            <v-spacer></v-spacer>
             <v-btn color="success" @click="submitChoice()">Submit choice</v-btn>
         </v-container>
     </div>
@@ -38,7 +39,7 @@
                 this.$store.dispatch('submitMenuChoice');
             },
             getDisabled() {
-                return !this.$store.currentSelectionComplete;
+                return !this.$store.activeMenuSelectionComplete;
             }
         }
     }

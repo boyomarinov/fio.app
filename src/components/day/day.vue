@@ -2,8 +2,10 @@
     <div class="day">
         <v-card-title>{{ formattedDay }}</v-card-title>
         <v-radio-group v-model="selectedMeal">
-            <v-radio class="meal" v-for="(meal, index) in day.meals" :value="meal.id" :label="meal.name" @change="onMealSelected(meal)">
-            </v-radio>
+            <template v-for="(meal, index) in meals">
+                <v-radio class="meal" :value="meal.id" :label="meal.name" @change="onMealSelected(meal)">
+                </v-radio>
+            </template>
         </v-radio-group>
     </div>
 </template>
@@ -18,7 +20,14 @@
         computed: {
             formattedDay() {
                 return moment(this.day.date).format('dddd');
+            },
+            meals() {
+                return this.$store.getters.dayMeals(moment(this.day.date).format('YYYY-MM-DDTHH:mm:ss')).meals;
             }
+        },
+        created() {
+            this.$store.dispatch('loadDays');
+            this.$store.dispatch('addDayMeals', this.day);
         },
         data() {
             return {
